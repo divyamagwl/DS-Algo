@@ -23,9 +23,9 @@ void TopDownHeapify(int heap[], int length, int parent)
     {
         int max_child;
         if(heap[left_child] < heap[right_child])
-            max_child = left_child;
-        else
             max_child = right_child;
+        else
+            max_child = left_child;
 
         if(heap[parent] > heap[max_child])
         {
