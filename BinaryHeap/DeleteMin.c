@@ -37,6 +37,8 @@ void TopDownHeapify(int heap[], int length, int parent)
         {
             swap(heap[parent],heap[max_child]);
             parent = max_child;
+            right_child = 2*parent + 2;
+            left_child = 2*parent + 1;
         } 
         else
             break;
