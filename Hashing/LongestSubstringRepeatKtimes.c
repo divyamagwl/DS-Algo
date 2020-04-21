@@ -1,4 +1,4 @@
-// Q - Given a binary string (having alpha numeric values) of length 100,000 and an integer k, 
+// Q - Given a binary string of length 100,000 and an integer k, 
 // implement an efficient algorithm to compute the length of the largest sub-string which repeats at least k times.
 
 #include<stdio.h>
@@ -29,9 +29,10 @@ int Count(struct node* Table[], char* string, int k, int check_len, int hash_val
     int check = 0; 
     while(Table[hash_value] != NULL)
     {
+        int index = Table[hash_value]->index;
         for(int j = 0; j<check_len; j++)
         {
-            if(string[i+j] != string[j])
+            if(string[i+j] != string[index+j])
             {
                 break;
             }
@@ -78,9 +79,8 @@ bool check(struct node* Table[], char* string, int check_len, int k)
         {
             if(Count(Table, string, k, check_len, hash_value, i) == k)
                 return true;
-        }                
+        }
     }
-
     return false;
 }
 
@@ -118,7 +118,7 @@ int main()
     int k;
     printf("Enter k-\n");
     scanf("%d",&k);
-    
+
     int max_len = lengthBS(string, k, 0, length-1);
     printf("Maximum length which repeats atleast k times is %d\n",max_len);
 
